@@ -74,8 +74,25 @@
 		<section class="sidebar">
 			<ul class="sidebar-menu">
 				<li>
-					<a href="">
+					<a href="<?php echo base_url(); ?>dashboard">
 						<i class="fa fa-tachometer"></i> &nbsp;&nbsp;<span>Dashboard</span>
+						<span class="pull-right-container">
+                                <i class="fa fa-angle-left pull-right"></i>
+                        </span>
+					</a>
+				</li>
+				<li>
+
+					<a href="<?php echo base_url(); ?>users/users">
+						<i class="fa fa-users"></i> &nbsp;&nbsp;<span>Uers</span>
+						<span class="pull-right-container">
+                                <i class="fa fa-angle-left pull-right"></i>
+                        </span>
+					</a>
+				</li>
+				<li>
+					<a href="">
+						<i class="fa fa-user-md"></i> &nbsp;&nbsp;<span>Doctors</span>
 						<span class="pull-right-container">
                                 <i class="fa fa-angle-left pull-right"></i>
                         </span>
