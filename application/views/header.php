@@ -4,7 +4,7 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<link rel="icon" href="" type="image/gif" sizes="16x16">
-	<title>System Name</title>
+	<title>Vision Solution</title>
 	<!-- Tell the browser to be responsive to screen width -->
 	<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
 	<!-- Bootstrap 3.3.7 -->
@@ -26,6 +26,7 @@
 		  href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 	<!-- jQuery 3 -->
 	<script src="<?php echo base_url(); ?>assets/bower_components/jquery/dist/jquery.min.js"></script>
+	<script>var base_url = '<?php echo site_url() ?>';</script>
 </head>
 <body class="fixed sidebar-mini sidebar-mini-expand-feature skin-purple" style="height: auto; min-height: 100%;" onload="startTime()">
 <!-- Site wrapper -->
@@ -84,15 +85,23 @@
 				<li>
 
 					<a href="<?php echo base_url(); ?>users/users">
-						<i class="fa fa-users"></i> &nbsp;&nbsp;<span>Uers</span>
+						<i class="fa fa-users"></i> &nbsp;&nbsp;<span>Users</span>
 						<span class="pull-right-container">
                                 <i class="fa fa-angle-left pull-right"></i>
                         </span>
 					</a>
 				</li>
 				<li>
-					<a href="">
+					<a href="<?php echo base_url(); ?>doctors/doctors">
 						<i class="fa fa-user-md"></i> &nbsp;&nbsp;<span>Doctors</span>
+						<span class="pull-right-container">
+                                <i class="fa fa-angle-left pull-right"></i>
+                        </span>
+					</a>
+				</li>
+				<li>
+					<a href="<?php echo base_url(); ?>patients/patients">
+						<i class="fa fa-user-circle-o"></i> &nbsp;&nbsp;<span>Patients</span>
 						<span class="pull-right-container">
                                 <i class="fa fa-angle-left pull-right"></i>
                         </span>
