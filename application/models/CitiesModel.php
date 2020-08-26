@@ -10,4 +10,6 @@ class CitiesModel extends CI_Model {
 		return $query->result(); // return data
 	}
 
+
+
 }

@@ -61,9 +61,10 @@
 				</div>
 				<div class="row">
 					<div class="col-md-12">
-						<div class="form-group">
+						<div class="form-group" id="email-group">
 							<label>Email Address</label>
 							<input type="email" class="form-control" name="email" id="email" placeholder="Email Address" data-validation="email" >
+							<p id="email-error" class="text-danger">Email already exists</p>
 						</div>
 					</div>
 				</div>
@@ -76,4 +77,28 @@
 	</div>
 </div>
 </div>
+
+<script>
+	$(document).ready(function () {
+		$('#email-error').hide();
+		$('#email').change(function () {
+			var email = $(this).val();
+			$.ajax({
+				type: 'post',
+				url: base_url + 'users/users/check_email',
+				async: false,
+				datatype: 'json',
+				data: {'email' : email},
+				success: function (response) {
+						if(response){
+							$('#email-error').show();
+						}
+						else {
+							$('#email-error').hide();
+						}
+				}
+			});
+		});
+	})
+</script>
 

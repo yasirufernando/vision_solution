@@ -63,19 +63,20 @@
 		})
 	});
 </script>
-<script>
-	$(function () {
-		$('.data_tables').DataTable({
-			'paging': true,
-			'lengthChange': true,
-			'searching': true,
-			'ordering': true,
-			'info': true,
-			'autoWidth': false,
-			"pageLength": 10,
-		})
-	})
-</script>
+<!--// data tables script-->
+<!--<script>-->
+<!--	$(function () {-->
+<!--		$('.data_tables').DataTable({-->
+<!--			'paging': true,-->
+<!--			// 'lengthChange': true,-->
+<!--			// 'searching': true,-->
+<!--			// 'ordering': true,-->
+<!--			// 'info': true,-->
+<!--			// 'autoWidth': false,-->
+<!--			// "pageLength": 10,-->
+<!--		})-->
+<!--	})-->
+<!--</script>-->
 <script>
 	// jquery validate plugin
 	$.validate();

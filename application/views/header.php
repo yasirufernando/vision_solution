@@ -107,6 +107,14 @@
                         </span>
 					</a>
 				</li>
+				<li>
+					<a href="<?php echo base_url(); ?>channels/channels">
+						<i class="fa fa-hospital-o"></i> &nbsp;&nbsp;<span>Channeling</span>
+						<span class="pull-right-container">
+                                <i class="fa fa-angle-left pull-right"></i>
+                        </span>
+					</a>
+				</li>
 			</ul>
 		</section>
 		<!-- /.sidebar -->

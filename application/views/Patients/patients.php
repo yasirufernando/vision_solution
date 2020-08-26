@@ -22,7 +22,7 @@
 						</tr>
 						<?php foreach ($patients as $patient) { ?>
 							<tr>
-								<td><?php echo $patient->first_name; ?></td>
+								<td><?php echo $patient->first_name.' '.$patient->last_name; ?></td>
 								<td><?php echo $patient->email; ?></td>
 								<td><?php echo $patient->mobile; ?></td>
 								<td><?php echo $patient->nic; ?></td>
@@ -73,7 +73,7 @@
 					<div class="col-md-6">
 						<div class="form-group">
 							<label>Mobile</label>
-							<input type="text" class="form-control" name="mobile" id="mobile" placeholder="Patient Mobile" data-validation="number" pattern="[0-9]{9,10}" >
+							<input type="text" class="form-control" name="mobile" id="mobile" placeholder="Patient Mobile" data-validation="number" pattern="[0-9]{9,11}" >
 						</div>
 					</div>
 				</div>
