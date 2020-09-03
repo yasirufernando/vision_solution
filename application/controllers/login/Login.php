@@ -15,26 +15,31 @@ class Login extends CI_Controller {
 		$this->load->view('login/login');
 	}
 
-	public function signup()
-		// assign input value to data variable
-	{
-		$data = array(
-			'email' => $this->input->post('email'),
-			'password' => $this->input->post('password')
-		);
+public function signup()
+	// assign input value to data variable
+{
+	//check if email or password valid
 
-		$query_result = $this->LoginModel->select_user($data);
+				$data = array(
+	'email' => $this->input->post('email'),
+	'password' => $this->input->post('password')
+);
 
-		if($query_result == true){
-			$this->session->set_userdata('name', 'Yasiru Fernando');
-			redirect('dashboard');
-		}
-		else{
-			redirect('login/login');
-		}
+	$query_result = $this->LoginModel->select_user($data);
+
+
+	if($query_result == true){
+		$this->session->set_userdata('name', 'Yasiru Fernando');
+		redirect('dashboard');
 	}
-
-	public function logout(){
+	else{
+		$this->session->set_flashdata('alert', true);
 		redirect('login/login');
+
 	}
+}
+
+public function logout(){
+	redirect('login/login');
+}
 }

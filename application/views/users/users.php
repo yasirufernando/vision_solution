@@ -41,6 +41,9 @@
 		<div class="modal-header">
 			<div clas="modal-title">Create New User</div>
 		</div>
+		<div class="alert alert-danger" role="alert" id="email_check">
+			Email Already exists.
+		</div>
 		<form action="<?php base_url(); ?>users/add_user" method="post">
 			<div class="modal-body">
 				<div class="row">
@@ -64,13 +67,13 @@
 						<div class="form-group" id="email-group">
 							<label>Email Address</label>
 							<input type="email" class="form-control" name="email" id="email" placeholder="Email Address" data-validation="email" >
-							<p id="email-error" class="text-danger">Email already exists</p>
+
 						</div>
 					</div>
 				</div>
 			</div>
 			<div class="modal-footer">
-				<button type="reset" class="btn btn-default">Reset</button>
+				<button type="reset" class="btn btn-default" onclick="$('#email_check').hide();">Reset</button>
 				<button type="submit" class="btn btn-primary">Create</button>
 			</div>
 		</form>
@@ -80,8 +83,8 @@
 
 <script>
 	$(document).ready(function () {
-		$('#email-error').hide();
-		$('#email').change(function () {
+		$('#email_check').hide();
+		$('#email').on('input', function() {
 			var email = $(this).val();
 			$.ajax({
 				type: 'post',
@@ -91,10 +94,12 @@
 				data: {'email' : email},
 				success: function (response) {
 						if(response){
-							$('#email-error').show();
+							$('#email_check').show();
+							$(':input[type="submit"]').prop('disabled', true);
 						}
 						else {
-							$('#email-error').hide();
+							$('#email_check').hide();
+							$(':input[type="submit"]').prop('disabled', false);
 						}
 				}
 			});

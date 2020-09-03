@@ -27,6 +27,8 @@
 	<!-- jQuery 3 -->
 	<script src="<?php echo base_url(); ?>assets/bower_components/jquery/dist/jquery.min.js"></script>
 	<script>var base_url = '<?php echo site_url() ?>';</script>
+	<!-- Full Calendar -->
+	<link rel="stylesheet" href="<?php echo base_url(); ?>assets/bower_components/fullcalendar/dist/fullcalendar.min.css">
 </head>
 <body class="fixed sidebar-mini sidebar-mini-expand-feature skin-purple" style="height: auto; min-height: 100%;" onload="startTime()">
 <!-- Site wrapper -->
@@ -110,6 +112,14 @@
 				<li>
 					<a href="<?php echo base_url(); ?>channels/channels">
 						<i class="fa fa-hospital-o"></i> &nbsp;&nbsp;<span>Channeling</span>
+						<span class="pull-right-container">
+                                <i class="fa fa-angle-left pull-right"></i>
+                        </span>
+					</a>
+				</li>
+				<li>
+					<a href="<?php echo base_url(); ?>schedules/schedules">
+						<i class="fa fa-calendar-plus-o"></i> &nbsp;&nbsp;<span>Scheduling</span>
 						<span class="pull-right-container">
                                 <i class="fa fa-angle-left pull-right"></i>
                         </span>

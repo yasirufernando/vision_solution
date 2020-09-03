@@ -47,6 +47,24 @@
 <script src="<?php echo base_url(); ?>assets/dist/js/adminlte.min.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="<?php echo base_url(); ?>assets/dist/js/demo.js"></script>
+<!-- Full Calendar -->
+<script src="<?php echo base_url()?>assets/bower_components/moment/moment.js"></script>
+<script src="<?php echo base_url()?>assets/bower_components/fullcalendar/dist/fullcalendar.min.js"></script>
+<script src="<?php echo base_url()?>assets/bower_components/fullcalendar/dist/gcal.min.js"></script>
+<script type="text/javascript">
+	$(document).ready(function() {
+		var calendar = $('#calendar').fullCalendar({
+			editable: false,
+			header: {
+				left: 'prev,today,next',
+				center: 'title',
+				right: 'month,agendaWeek,agendaDay',
+			},
+			events: "",
+			selecttable: false,
+		})
+	});
+</script>
 <script>
 	$(document).ready(function () {
 		$('.sidebar-menu').tree();

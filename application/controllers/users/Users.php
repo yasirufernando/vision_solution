@@ -41,23 +41,28 @@ class Users extends CI_Controller {
 		$mail_settings = Array(
 			'protocol'    => 'smtp',
 			'smtp_host'   => 'smtp.googlemail.com',
-			'smtp_port'   => '587',
-			'smtp_user'   => 'testyasipro@gmail.com',
-			'smtp_pass'   => 'Yasiru@[1234]',
+			'smtp_port'   => '465',
+			'smtp_user'   => 'shlittab@gmail.com',
+			'smtp_pass'   => 'Rukshan@4321',
 			'mailtype'    => 'html',
 			'smtp_crypto' => 'tls',
 			'charset'     => 'utf-8',
 			'newline'     => "\r\n"
 		);
-		$this->load->library('email', $mail_settings);
-		$this->email->from('admin@biogreen.lk', 'Bio Green Holdings (Pvt) Ltd');
-		$this->email->to('imeshujith@gmail.com');
-		$this->email->set_mailtype("html");
-		$this->email->subject('');
-		$this->email->message('');
-		$this->email->send();
 
-		redirect('users/users');
+		$this->load->library('email', $mail_settings);
+		$this->email->from('admin@visionsolution.lk', 'Vision Solution System');
+		$this->email->to($new_user['email']);
+		$this->email->set_mailtype("html");
+		$this->email->subject('Invitation for Vision Solution');
+		$this->email->message('
+   <p>Dear '.$new_user['first_name'].' '.$new_user['last_name'].'</p>
+   
+   <p>Email: '.$new_user['email'].'</p>
+   <p>password: '.$randomString.'</p>
+   
+      ');
+		$this->email->send();
 
 	}
 
