@@ -4,24 +4,26 @@
 class LoginModel extends CI_Model {
 
 	public function select_user($data){
-			$condition = array(
-				'email' => $data['email'],
-				'password' => $data['password']
+		$condition = array(
+			'email' => $data['email'],
+			'password' => $data['password']
 
-			);
-		// select * from users where $condition
-			$query = $this->db->select("*")->from("users")->where($condition);
+		);
+		$this->db->where('email', $data['email']);
+		$query = $this->db->get('users');
 
-		// Out put
-			$result = $query->get()->result_array(); // row 1
+		if($query->result()){
+			$this->db->where($condition);
+			$user = $this->db->get('users');
 
-			// check wheather if user available
-		if(count($result) == 1 ){
-			return true;
+			if($user->result()){
+				return true; // email and password check
+			}else{
+				return false; // password incorrect
+			}
 		}else{
 			return false;
 		}
-
 
 	}
 }

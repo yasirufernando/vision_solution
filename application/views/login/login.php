@@ -100,7 +100,12 @@
                 <div class="card">
                     <div class="card-header">Register</div>
                     <div class="card-body">
-                        <form action="<?php base_url(); ?>login/signup" method="post">
+						<?php if($this->session->flashdata('alert')){ ?>
+						<div class="alert alert-danger" role="alert">
+							Incorrect username or Password please check again !!
+						</div>
+						<?php } ?>
+                        <form action="<?php base_url(); ?>signup" method="post">
                             <div class="form-group row">
                                 <label for="email_address" class="col-md-4 col-form-label text-md-right">E-Mail Address</label>
                                 <div class="col-md-6">
