@@ -17,7 +17,7 @@
 				<div class="box-header">
 					<h3 class="box-title">Schedules</h3>
 				</div>
-				<form action="<?php base_url(); ?>" method="post">
+				<form action="<?php base_url(); ?>schedules/add_schedules" method="post">
 					<div class="box-body">
 						<div class="form-group">
 							<label>Doctor Name</label>
@@ -42,6 +42,7 @@
 				</form>
 
 			</div>
+
 		</div>
 	</div>
 </section>

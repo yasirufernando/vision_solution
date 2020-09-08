@@ -48,11 +48,11 @@
 <!-- AdminLTE for demo purposes -->
 <script src="<?php echo base_url(); ?>assets/dist/js/demo.js"></script>
 <!-- Full Calendar -->
-<script src="<?php echo base_url()?>assets/bower_components/moment/moment.js"></script>
-<script src="<?php echo base_url()?>assets/bower_components/fullcalendar/dist/fullcalendar.min.js"></script>
-<script src="<?php echo base_url()?>assets/bower_components/fullcalendar/dist/gcal.min.js"></script>
+<script src="<?php echo base_url() ?>assets/bower_components/moment/moment.js"></script>
+<script src="<?php echo base_url() ?>assets/bower_components/fullcalendar/dist/fullcalendar.min.js"></script>
+<script src="<?php echo base_url() ?>assets/bower_components/fullcalendar/dist/gcal.min.js"></script>
 <script type="text/javascript">
-	$(document).ready(function() {
+	$(document).ready(function () {
 		var calendar = $('#calendar').fullCalendar({
 			editable: false,
 			header: {
@@ -60,7 +60,7 @@
 				center: 'title',
 				right: 'month,agendaWeek,agendaDay',
 			},
-			events: "",
+			events: base_url + "schedules/schedules/get_schedule",
 			selecttable: false,
 		})
 	});
@@ -102,8 +102,8 @@
 
 <script>
 	function startTime() {
-		var months = ["January","February","March","April","May","June","July","August","September","October","November","December"];
-		var ap ="";
+		var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+		var ap = "";
 		var today = new Date();
 		var y = today.getFullYear();
 		var m = months[today.getMonth()];
@@ -111,15 +111,22 @@
 		var h = today.getHours();
 		var mi = today.getMinutes();
 		var s = today.getSeconds();
-		if(h > 12) { h = h - 12};
-		h > 12 ? ap = "PM": ap = "AM";
+		if (h > 12) {
+			h = h - 12
+		}
+		;
+		h > 12 ? ap = "PM" : ap = "AM";
 		m = checkTime(m);
 		s = checkTime(s);
-		document.getElementById('datetime').innerHTML = d + " " + m +  " " + y + " | " + h + ":" + mi + ":" + s + " " + ap;
+		document.getElementById('datetime').innerHTML = d + " " + m + " " + y + " | " + h + ":" + mi + ":" + s + " " + ap;
 		var t = setTimeout(startTime, 500);
 	}
+
 	function checkTime(i) {
-		if (i < 10) {i = "0" + i};
+		if (i < 10) {
+			i = "0" + i
+		}
+		;
 		return i;
 	}
 </script>
