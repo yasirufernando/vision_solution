@@ -11,6 +11,7 @@ class Doctors extends CI_Controller
 		$this->load->model('CitiesModel');
 		$this->load->model('DistrictsModel');
 		$this->load->model('ProvincesModel');
+		$this->load->model('SubjectModel');
 	}
 
 	public function index()
@@ -19,14 +20,18 @@ class Doctors extends CI_Controller
 			'doctors' => $this->DoctorModel->selectdoc(),
 			'cities' => $this->CitiesModel->select_cities(),
 			'districts' => $this->DistrictsModel->select_districts(),
-			'provinces' => $this->ProvincesModel->select_provinces()
+			'provinces' => $this->ProvincesModel->select_provinces(),
+			'subject' => $this->SubjectModel->select_subject()
 		);
+
+//		$data = array(
+//			'subjects' => $this->SubjectModel->select_subject(),
+//		);
 
 
 		$this->load->view('header');
 		$this->load->view('doctors/doctors', $data);
 		$this->load->view('footer');
-
 	}
 
 	public function add_doctor(){
@@ -34,6 +39,7 @@ class Doctors extends CI_Controller
 			'salutation' => $this->input->post('salutation'),
 			'first_name' => $this->input->post('first_name'),
 			'last_name' => $this->input->post('last_name'),
+			'doctor_subject' => $this->input->post('doctor_subject'),
 			'email' => $this->input->post('email'),
 			'street' => $this->input->post('street'),
 			'address_two' => $this->input->post('address_two'),
@@ -71,6 +77,12 @@ class Doctors extends CI_Controller
 		echo json_encode($result);
 	}
 
+	public function get_doctor_subject(){
+		$doctor_subject = $this->input->get('doctor_subject');
+		$result = $this->DoctorModel->get_postal_code($doctor_subject);
+		echo json_encode($result);
+	}
+
 	public function update_doctors(){
 		$id = $this->input->post('id');
 		$result = $this->DoctorModel->get_doctors($id);
@@ -101,6 +113,10 @@ class Doctors extends CI_Controller
 			redirect('doctors/doctors');
 		}
 	}
+//	public function get_subject(){
+//		$result = $this->DoctorModel->get_subject();
+//		echo json_encode($result);
+//	}
 
 	public function delete_doctor(){
 		$id = $this->input->post('delete_id');
@@ -141,6 +157,8 @@ class Doctors extends CI_Controller
 			redirect('doctors/doctors');
 		}
 	}
+
+
 
 
 }

@@ -125,6 +125,14 @@
                         </span>
 					</a>
 				</li>
+				<li>
+					<a href="<?php echo base_url(); ?>subject/subject">
+						<i class="fa fa-dashcube" aria-hidden="true"></i> &nbsp;&nbsp;<span>Subject</span>
+						<span class="pull-right-container">
+                                <i class="fa fa-angle-left pull-right"></i>
+                        </span>
+					</a>
+				</li>
 			</ul>
 		</section>
 		<!-- /.sidebar -->

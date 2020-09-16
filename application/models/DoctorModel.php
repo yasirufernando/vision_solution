@@ -9,6 +9,12 @@ class DoctorModel extends CI_Model {
 		return $query->result(); // return data
 	}
 
+	public function get_subject(){
+		$this->db->from('doctor_subject');
+		$query = $this->db->get();
+		return $query->result();
+	}
+
 	public function create($new_doctor){
 		$this->db->insert('doctors', $new_doctor);
 
@@ -32,6 +38,12 @@ class DoctorModel extends CI_Model {
 		return $query->result();
 	}
 
+	public function get_doctor_subject($doctor_subject){
+		$this->db->from('doctor_subject')->where('doctor_subject', $doctor_subject);
+		$query = $this->db->get();
+		return $query->result();
+	}
+
 	public function update_doctor($id, $update_new_doctor){
 		$this->db->where('id', $id);
 		$this->db->update('doctors', $update_new_doctor);
@@ -42,6 +54,12 @@ class DoctorModel extends CI_Model {
 			return false;
 		}
 	}
+
+//	public function get_subject(){
+//		$this->db->from('doctor_subject');
+//		$query = $this->db->get();
+//		return $query->result();
+//	}
 
 	public function delete_doctor($id){
 		$this->db->where('id', $id);

@@ -36,6 +36,7 @@
 					<table class="table table-bordered table-responsive data_tables display pageResize" id="doctor_table">
 						<tr>
 							<th>Doctor Name</th>
+							<th>Doctor Subject</th>
 							<th>Email</th>
 							<th>Address</th>
 							<th>Create Date</th>
@@ -45,6 +46,7 @@
 						<?php foreach ($doctors as $doctor) { ?> <!--left for doctor controller key right for suitable one doctor -->
 							<tr>
 								<td><?php echo $doctor->salutation; ?>&nbsp;<?php echo $doctor->first_name; ?></td>
+								<td><?php echo $doctor->doctor_subject; ?></td>
 								<td><?php echo $doctor->email; ?></td>
 								<td><?php echo $doctor->street.','.$doctor->address_two.',<br>'.$doctor->city.', '.$doctor->postal.',<br>'.$doctor->district.', '.$doctor->province; ?></td>
 								<td><?php echo $doctor->create_date; ?></td>
@@ -119,24 +121,41 @@
 				<div class="row">
 					<div class="col-md-6">
 						<div class="form-group">
-							<label>Email Address</label>
-							<input type="email" class="form-control" name="email" id="email" placeholder="Email Address" data-validation="email" >
+							<label>Doctor Subject</label>
+							<select class="form-control" name="doctor_subject" id="doctor_subject" data-validation="required">
+								<option selected disabled>
+									Select One
+								</option>
+								<?php foreach ($subject as $doctor_subject){ ?> <!--left for controller key right for suitable one -->
+									<option><?php echo $doctor_subject->doctor_subject ?></option>
+								<?php } ?>
+							</select>
 						</div>
 					</div>
 					<div class="col-md-6">
 						<div class="form-group">
-							<label>Street</label>
-							<input type="text" class="form-control" name="street" id="street" placeholder="Street" data-validation="required" >
+							<label>Email Address</label>
+							<input type="email" class="form-control" name="email" id="email" placeholder="Email Address" data-validation="email" >
 						</div>
 					</div>
 				</div>
+
 				<div class="row">
+					<div class="col-md-6">
+						<div class="form-group">
+							<label>Address 1</label>
+							<input type="text" class="form-control" name="street" id="street" placeholder="Street" data-validation="required" >
+						</div>
+					</div>
 					<div class="col-md-6">
 						<div class="form-group">
 							<label>Address 2</label>
 							<input type="text" class="form-control" name="address_two" id="address_two" placeholder="Address Two" data-validation="required" >
 						</div>
 					</div>
+
+				</div>
+				<div class="row">
 					<div class="col-md-6">
 						<div class="form-group">
 							<label>City</label>
@@ -150,14 +169,15 @@
 							</select>
 						</div>
 					</div>
-				</div>
-				<div class="row">
 					<div class="col-md-6">
 						<div class="form-group">
 							<label>Postal Cord</label>
 							<input type="text" class="form-control" name="postal" id="postal" placeholder="Postal Cord" readonly >
 						</div>
 					</div>
+
+				</div>
+				<div class="row">
 					<div class="col-md-6">
 						<div class="form-group">
 							<label>District</label>
@@ -171,9 +191,7 @@
 							</select>
 						</div>
 					</div>
-				</div>
-				<div class="row">
-					<div class="col-md-12">
+					<div class="col-md-6">
 						<div class="form-group">
 							<label>Province</label>
 							<input type="text" class="form-control" name="province" id="province" placeholder="Province" readonly >
@@ -335,6 +353,22 @@
 				data: {'city': city}, <!-- key, value -->
 				success: function (response) {
 					$('#postal').val(response[0]['postcode']);
+				},
+			});
+		});
+	});
+
+	$(document).ready(function(){
+		$('#doctor_subject').change(function () {
+			let doctor_subject = $(this).val();
+			$.ajax({
+				type: 'get',
+				url: base_url + 'doctors/Doctors/doctor_subject', <!-- controller folder, controller name, function name -->
+				async: false,
+				dataType: 'json',
+				data: {'doctor_subject': doctor_subject}, <!-- key, value -->
+				success: function (response) {
+					$('#doctor_subject').val(response[0]['doctor_subject']);
 				},
 			});
 		});
